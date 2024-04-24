@@ -20,7 +20,7 @@ import com.devsuperior.workshopmongo.models.dto.UserDTO;
 import com.devsuperior.workshopmongo.sevices.UserService;
 
 @RestController
-@RequestMapping(value = "users")
+@RequestMapping(value = "/users")
 public class UserController {
 
 	@Autowired
@@ -58,7 +58,7 @@ public class UserController {
 	}
 	
 	@GetMapping(value = "/{id}/posts")
-	public ResponseEntity<List<PostDTO>> getUserPosts(@PathVariable String id) {
+	public ResponseEntity<List<PostDTO>> getUserUsers(@PathVariable String id) {
 		List<PostDTO> list = service.getUserPosts(id);
 		return ResponseEntity.ok().body(list);
 	}

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.devsuperior.workshopmongo.models.dto.PostDTO;
 import com.devsuperior.workshopmongo.models.dto.UserDTO;
-import com.devsuperior.workshopmongo.models.entities.Post;
 import com.devsuperior.workshopmongo.models.entities.User;
 import com.devsuperior.workshopmongo.repositories.UserRepository;
 import com.devsuperior.workshopmongo.sevices.exceptions.ResourceNotFoundException;
