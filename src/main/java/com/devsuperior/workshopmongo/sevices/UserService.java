@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.devsuperior.workshopmongo.models.dto.UserDTO;
 import com.devsuperior.workshopmongo.models.entities.User;
@@ -44,6 +45,11 @@ public class UserService {
 		copyDtotoEntity(dto, entity);
 		entity = repository.save(entity);
 		return new UserDTO(entity);
+	}
+	
+	public void delete(@PathVariable String id) {
+		getEntityById(id);
+		repository.deleteById(id);
 	}
 	
 	private void copyDtotoEntity(UserDTO dto, User entity) {
