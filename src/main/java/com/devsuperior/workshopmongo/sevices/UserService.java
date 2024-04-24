@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.devsuperior.workshopmongo.models.dto.PostDTO;
 import com.devsuperior.workshopmongo.models.dto.UserDTO;
+import com.devsuperior.workshopmongo.models.entities.Post;
 import com.devsuperior.workshopmongo.models.entities.User;
 import com.devsuperior.workshopmongo.repositories.UserRepository;
 import com.devsuperior.workshopmongo.sevices.exceptions.ResourceNotFoundException;
@@ -50,6 +52,11 @@ public class UserService {
 	public void delete(@PathVariable String id) {
 		getEntityById(id);
 		repository.deleteById(id);
+	}
+	
+	public List<PostDTO> getUserPosts(String id) {
+		User user = getEntityById(id);
+		return user.getPosts().stream().map(x -> new PostDTO(x)).toList();
 	}
 	
 	private void copyDtotoEntity(UserDTO dto, User entity) {
