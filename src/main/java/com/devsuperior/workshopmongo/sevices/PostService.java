@@ -1,5 +1,6 @@
 package com.devsuperior.workshopmongo.sevices;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,10 @@ public class PostService {
 	private Post getEntityById(String id) {
 		Optional<Post> result = repository.findById(id);
 		return result.orElseThrow(() -> new ResourceNotFoundException("Resource not found."));
+	}
+	
+	public List<PostDTO> findByTitle(String text) {
+		List<Post> list = repository.findByTitleContainingIgnoreCase(text);
+		return list.stream().map(x -> new PostDTO(x)).toList();
 	}
 }
